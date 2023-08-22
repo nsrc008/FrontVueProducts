@@ -4,7 +4,7 @@
     <div class="card_product__subtitle">{{ price }} $</div>
     <div class="card_product__wrapper">
       <div class="card_product__title">{{ product }}</div>
-      <a  @click="selectItem({id})" class="card_product__icon">
+      <a   class="card_product__icon">
         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
           <path
             d="m397.78 316h-205.13a15 15 0 0 1 -14.65-11.67l-34.54-150.48a15 15 0 0 1 14.62-18.36h274.27a15 15 0 0 1 14.65 18.36l-34.6 150.48a15 15 0 0 1 -14.62 11.67zm-193.19-30h181.25l27.67-120.48h-236.6z">
