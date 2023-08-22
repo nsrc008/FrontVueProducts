@@ -36,7 +36,7 @@
       ...mapMutations(['addItem']),
       handleItemSelected(item) {
           axios
-            .get(`${config.apiFood}/data/${item.id}`, {
+            .get(`${config.apiFood}/api/data/products/${item.id}`, {
               headers: {},
             })
             .then((result) => {
