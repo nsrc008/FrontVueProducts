@@ -27,3 +27,9 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### ENLACE VISTA PRINCIPAL
+
+```sh
+http://67.207.81.33/
+```
