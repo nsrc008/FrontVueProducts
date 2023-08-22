@@ -16,5 +16,5 @@ export default defineConfig({
 })
 
 module.export = {
-  publicPath : "/LaravelApiView/ProductsVueFront/"
+  publicPath : "/FrontVueProducts/"
 }
