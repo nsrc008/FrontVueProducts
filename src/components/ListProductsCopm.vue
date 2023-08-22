@@ -68,7 +68,7 @@
       },
       getData() {
         axios
-          .get(`${config.apiFood}/data`, {
+          .get(`${config.apiFood}/api/data/products`, {
             headers: {},
           })
           .then((result) => {
