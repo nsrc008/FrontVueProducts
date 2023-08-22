@@ -38,7 +38,6 @@
           })
           .then((result) => {
             this.listaProduct = result.data.data
-            console.log(this.listaProduct)
           })
           .catch((error) => {
             console.log(error)
