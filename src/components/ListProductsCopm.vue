@@ -31,6 +31,7 @@
     },
     created() {
       this.getData()
+      console.log(this.addItem)
     },
     methods: {
       ...mapMutations(['addItem']),
