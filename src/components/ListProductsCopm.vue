@@ -31,7 +31,7 @@
     },
     created() {
       this.getData()
-      console.log(this.addItem)
+      console.log(this.items_products.listaProduct)
     },
     methods: {
       ...mapMutations(['addItem']),
