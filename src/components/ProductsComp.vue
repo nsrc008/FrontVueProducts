@@ -1,5 +1,5 @@
 <template>
-  <div class="card_product">
+  <div @click="selectItem({id})" class="card_product">
     <div class="card_product__img"><img class="img_product" :src="image" /></div>
     <div class="card_product__subtitle">{{ price }} $</div>
     <div class="card_product__wrapper">
