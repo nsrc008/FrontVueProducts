@@ -30,9 +30,9 @@ const router = createRouter({
       path: '/autoredirect',
       beforeEnter: (to, from, next) => {
         if (localStorage.getItem('isAuthenticated')) {
-          next('/dashboard')
+          to('/dashboard')
         } else {
-          next('/')
+          to('/')
         }
       },
     },
