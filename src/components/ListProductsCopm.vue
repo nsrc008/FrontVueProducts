@@ -1,7 +1,7 @@
 <template>
     <div class="grid-container">
-      <div class="grid-item" v-for="item in items_products.listaProduct" :key="item.id">
-        <ProductsComp @itemSelected="handleItemSelected" :image="item.image" :price="item.price" :product="item.product" :id="item.id"/>
+      <div class="grid-item" v-for="item in listaProduct" :key="item.id">
+        <ProductsComp @itemSelected="handleItemSelected(item)" :image="item.image" :price="item.price" :product="item.product" :id="item.id"/>
       </div> 
   </div>
   </template>
@@ -14,7 +14,7 @@
   import Swal from 'sweetalert2'
 
   export default {
-    name : "Products",    
+    name : "ListProductsCopm",    
     computed: {
       ...mapState(['itemList']), // itemList debe coincidir con el nombre del estado en Vuex
     },
@@ -23,17 +23,34 @@
     },
     data() {
       return {
-        items_products: {
-          listaProduct: []
-        },
+        listaProduct: [],
         columns : [], 
       };
     },
-    created() {
-      this.getData()
-      console.log(this.items_products.listaProduct)
+    mounted() {
+      this.getData();  
     },
     methods: {
+      async getData() {
+        axios
+          .get(`${config.apiFood}/api/data/products`, {
+            headers: {},
+          })
+          .then((result) => {
+            this.listaProduct = result.data.data
+            console.log(this.listaProduct)
+          })
+          .catch((error) => {
+            console.log(error)
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'No se han cargado elementos, Favor Recargar la pagina',
+                showConfirmButton: false,
+                timer: 1500
+            })
+          })
+      },
       ...mapMutations(['addItem']),
       handleItemSelected(item) {
           axios
@@ -41,6 +58,7 @@
               headers: {},
             })
             .then((result) => {
+              console.log(result.data)
               if (!this.itemList.some(item => item.id === result.data.id)) {
                 const res = result.data
                 res.numero = 1;
@@ -54,7 +72,7 @@
                   timer: 700
               })
               }
-              result.data = ''; // Limpiar el campo de entrada
+              result.data.data = ''; // Limpiar el campo de entrada
             })
             .catch((error) => {
               console.log(error)
@@ -66,26 +84,7 @@
                   timer: 1500
               })
             })         
-      },
-      getData() {
-        axios
-          .get(`${config.apiFood}/api/data/products`, {
-            headers: {},
-          })
-          .then((result) => {
-            this.items_products.listaProduct = result.data
-          })
-          .catch((error) => {
-            console.log(error)
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'No se han cargado elementos, Favor Recargar la pagina',
-                showConfirmButton: false,
-                timer: 1500
-            })
-          })
-      },
+      },      
     }
   }
 </script>

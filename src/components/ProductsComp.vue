@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "Product",
+  name: "ProductsComp",
   data() {
     return {
       newItem: '',
@@ -40,7 +40,7 @@ export default {
       required: true
     },
     price: {
-      type: String,
+      type: Number,
       required: true
     },
     product: {
