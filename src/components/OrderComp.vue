@@ -132,7 +132,7 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             }).then(() => {
-                                window.location.reload();
+                                this.$router.push({ name: 'dashboard' });
                             });                            
                         })
                         .catch(() => {
